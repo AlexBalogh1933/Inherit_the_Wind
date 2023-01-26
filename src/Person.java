@@ -7,6 +7,7 @@ public class Person
     public String idString;
     public String inputTitle;
     public int yearOfBirth;
+    public int year;
     static private int IDSeed = 1;
 
     public static void setIDSeed(int IDSeed)
@@ -19,13 +20,14 @@ public class Person
         return IDSeed;
     }
 
-    public Person( String firstName, String lastName, String idString, String inputTitle, int yearOfBirth)
+    public Person( String firstName, String lastName, String idString, String inputTitle, int yearOfBirth, int year)
     {
         this.firstName = firstName;
         this.lastName = lastName;
         this.idString = idString;
         this.inputTitle = inputTitle;
         this.yearOfBirth = yearOfBirth;
+        this.year = year;
     }
     public Person(String firstName, String lastName, int yearOfBirth)
     {
@@ -95,6 +97,14 @@ public class Person
         this.yearOfBirth = yearOfBirth;
     }
 
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
+    }
+
     public String fullName()
     {
         return this.firstName + " " + this.lastName;
@@ -108,6 +118,11 @@ public class Person
     public String getAge()
     {
         return Integer.toString(Calendar.getInstance().get(Calendar.YEAR) - this.yearOfBirth);
+    }
+
+    public String getAge(int year)
+    {
+        return Integer.toString(this.year - this.yearOfBirth);
     }
 
     public String toCSVRecordMethod()
