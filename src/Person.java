@@ -20,7 +20,7 @@ public class Person
         return IDSeed;
     }
 
-    public Person( String firstName, String lastName, String idString, String inputTitle, int yearOfBirth, int year)
+    public Person( String firstName, String lastName, String idString, String inputTitle, int yearOfBirth)
     {
         this.firstName = firstName;
         this.lastName = lastName;
@@ -122,7 +122,7 @@ public class Person
 
     public String getAge(int year)
     {
-        return Integer.toString(this.year - this.yearOfBirth);
+        return Integer.toString(year - this.yearOfBirth);
     }
 
     public String toCSVRecordMethod()

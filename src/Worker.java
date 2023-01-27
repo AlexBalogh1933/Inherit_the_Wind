@@ -2,65 +2,54 @@ public class Worker extends Person
 {
     public double hourlyPayRate;
     public double hoursWorked;
-    public double fullHoursPay;
-    public double overtimeHours;
+    public double overtimeHours = hoursWorked - 40;;
 
-    public Worker(String firstName, String lastName, String idString, String inputTitle, int yearOfBirth, int year, double hourlyPayRate, double hoursWorked)
+    public Worker(String firstName, String lastName, String idString, String inputTitle, int yearOfBirth, double hourlyPayRate)
     {
-        super(firstName, lastName, idString, inputTitle, yearOfBirth, year);
+        super(firstName, lastName, idString, inputTitle, yearOfBirth);
         this.hourlyPayRate = hourlyPayRate;
         this.hoursWorked = hoursWorked;
     }
-    public Worker(String firstName, String lastName, int yearOfBirth, double hourlyPayRate, double hoursWorked)
+
+    public String toString()
     {
-        super(firstName, lastName, yearOfBirth);
-        this.hourlyPayRate = hourlyPayRate;
-        this.hoursWorked = hoursWorked;
+        return this.getFirstName() + ", " + this.getLastName() + ", " + this.getIdString() + ", " + this.getYearOfBirth() + ", Hourly Pay of " + this.hourlyPayRate;
     }
 
     public double getHourlyPayRate()
     {
         return hourlyPayRate;
     }
-
     public void setHourlyPayRate(double hourlyPayRate)
     {
         this.hourlyPayRate = hourlyPayRate;
     }
-
-    public double getHoursWorked()
+    double calculateWeeklyPay(double hoursWorked)
     {
-        return hoursWorked;
+        double overtimePay;
+
+        if (hoursWorked <= 40)
+        {
+            return hoursWorked * this.hourlyPayRate;
+        }
+        else
+        {
+            overtimePay = overtimeHours * (1.5 * this.hourlyPayRate);
+            return overtimePay + (40 * this.hourlyPayRate);
+        }
     }
 
-    public void setHoursWorked(double hoursWorked)
-    {
-        this.hoursWorked = hoursWorked;
-    }
-
-    public double calculateWeeklyPay(double hoursWorked)
+    String displayWeeklyPay(double hoursWorked)
     {
         if (hoursWorked <= 40)
         {
-           return this.hoursWorked * this.hourlyPayRate;
+            return "Worked for " + hoursWorked + " hours. Paid " + calculateWeeklyPay(hoursWorked);
         }
         else
         {
-            double fullHoursPay = this.hourlyPayRate * 40;
-            double overtimeHours = this.hoursWorked - 40;
-            double overtimePay = overtimeHours * (this.hourlyPayRate * 1.5);
-            return fullHoursPay + overtimePay;
+            return "Worked for 40 hours and " + this.overtimeHours + " overtime hours. Paid " + calculateWeeklyPay(hoursWorked);
         }
+
     }
-    public String displayWeeklyPay(double hoursWorked)
-    {
-        if(this.hoursWorked <= 40)
-        {
-            return "You worked " + this.hoursWorked + " and made " + calculateWeeklyPay(this.hoursWorked) ;
-        }
-        else
-        {
-            return "You worked 40 hours plus " + this.overtimeHours + " hour of overtime. You made " + calculateWeeklyPay(this.hoursWorked);
-        }
-    }
+
 }
