@@ -29,13 +29,6 @@ public class Person
         this.yearOfBirth = yearOfBirth;
         this.year = year;
     }
-    public Person(String firstName, String lastName, int yearOfBirth)
-    {
-        this.idString = this.genidString();
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.yearOfBirth = yearOfBirth;
-    }
 
     private String genidString()
     {

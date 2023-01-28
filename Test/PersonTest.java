@@ -10,25 +10,21 @@ class PersonTest
     @BeforeEach
     void setUp()
     {
-        p1 = new Person("Bob", "Tester1", "00000A", "Mr", 1955, 2000);
-        p2 = new Person("Sally", "Tester2", "00000B", "Mrs", 1975, 2004);
-        Person.setIDSeed(0);
-        p3 = new Person("Bob", "Tester3", 1960);
-        p4 = new Person( "Sally", "Tester4", 1965);
-        p5 = new Person( "Fred", "Tester5", 1970);
-        p6 = new Person( "Cindy", "Tester6", 1975);
+        p1 = new Person("Bob", "Tester1", "00000A","Mr",1955);
+        p2 = new Person("Sally", "Tester2", "00000B", "Mrs", 1975);
+        p3 = new Person("Jamie", "Tester3", "00000C", "Mrs", 1985);
+        p4 = new Person("Rich", "Tester4", "00000D", "Mr", 2000);
+        p5 = new Person("Phil", "Tester5", "00000E", "Mr", 1993);
+        p6 = new Person("Sydney", "Tester6", "00000F", "Mrs", 1999);
+
     }
 
-    @Test
-    void getIDSeed()
-    {
-        assertEquals(4, Person.getIDSeed());
-    }
     @Test
     void getIdString()
     {
         assertEquals("00000A", p1.getIdString());
     }
+
     @Test
     void getFirstName() {
         assertEquals("Bob", p1.getFirstName());
